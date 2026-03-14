@@ -9,7 +9,9 @@ def validate_preset_config(config):
     required_keys = {"dot_spacing", "style"}
     if not required_keys.issubset(config.keys()):
         raise ValidationError("Missing required configuration keys.")
-    if not isinstance(config["dot_spacing"], int) or config["dot_spacing"] <= 0:
+    if not isinstance(config["dot_spacing"], int) or isinstance(config["dot_spacing"], bool):
+        raise ValidationError("dot_spacing must be an integer.")
+    if config["dot_spacing"] <= 0:
         raise ValidationError("dot_spacing must be a positive integer.")
     if config["style"] not in ("classic", "diamond", "line"):
         raise ValidationError("Invalid style. Choose classic, diamond, or line.")
