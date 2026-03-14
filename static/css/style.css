@@ -32,7 +32,10 @@ h1 { margin-bottom: 1.5rem; }
 form p { margin-bottom: 1rem; }
 form label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
 form input[type="text"],
-form input[type="password"] {
+form input[type="password"],
+form input[type="number"],
+form select,
+form textarea {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
