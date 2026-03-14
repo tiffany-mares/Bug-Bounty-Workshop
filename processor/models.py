@@ -18,9 +18,10 @@ class ImageUpload(models.Model):
     )
 
     def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
         if self.is_public and not self.share_token:
             self.share_token = self._generate_token()
-        super().save(*args, **kwargs)
+            super().save(update_fields=["share_token"])
 
     def _generate_token(self):
         raw = f"{self.user_id}-{self.pk}-{self.uploaded_at}"

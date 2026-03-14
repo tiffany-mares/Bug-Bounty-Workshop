@@ -46,7 +46,7 @@ class RateLimitMiddleware:
                 user=request.user,
                 path="/",
                 method="POST",
-                timestamp__lte=window,
+                timestamp__gte=window,
             ).count()
 
             max_uploads = getattr(settings, "RATE_LIMIT_UPLOADS", 10)
